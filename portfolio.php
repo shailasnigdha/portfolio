@@ -1,0 +1,4 @@
+<?php $projects=require __DIR__.'/../data/projects.php'; ?>
+<section class="card"><h1>Portfolio</h1><p class="muted">Selected projects.</p></section>
+<section class="filters"><button class="chip active" data-filter="all">All</button><button class="chip" data-filter="dev">Dev</button><button class="chip" data-filter="app">App</button><button class="chip" data-filter="web">Web</button></section>
+<section class="grid three portfolio-grid"><?php foreach($projects as $p): ?><a class="card project" data-tags="<?php echo e(implode(' ',$p['tags']));?>" href="<?php echo e($p['url']);?>" target="_blank"><div class="project-thumb"><img src="<?php echo e($p['image']);?>"></div><div class="project-meta"><div class="project-title"><?php echo e($p['title']);?></div><div class="muted small"><?php echo e(ucfirst($p['category']));?></div></div></a><?php endforeach;?></section>

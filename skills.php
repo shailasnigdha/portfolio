@@ -1,25 +1,11 @@
-<?php include 'header.php'; ?>
-<section class="skills">
-    <h2>Academic Background</h2>
-    <ul>
-        <li>SSC (2019) – Dhanmondi Kamrunnesa Govt Girls High School, GPA 5</li>
-        <li>HSC (2021) – Birshresto Munshi Abdur Rouf Public College, GPA 5</li>
-        <li>BSc in CSE (2023–Present) – KUET</li>
-        <li>1st Year CGPA: 3.19 | 2nd Year CGPA: 3.12 | 2 years remaining</li>
-    </ul>
-
-    <h2>Experience</h2>
-    <ul>
-        <li>Started a small food business</li>
-        <li>Visited many districts in Bangladesh</li>
-        <li>Volunteered in TRY and DREAM of KUET</li>
-    </ul>
-
-    <h2>Skills</h2>
-    <ul>
-        <li>Good communication</li>
-        <li>Fluent in 4 languages</li>
-        <li>Good at teamwork & leadership</li>
-    </ul>
-</section>
-<?php include 'footer.php'; ?>
+<?php return [
+  ['name'=>'Communication',    'level'=>85],
+  ['name'=>'Languages (4)',    'level'=>95],
+  ['name'=>'Teamwork',    'level'=>97],
+  ['name'=>'Web Design',    'level'=>75],
+  ['name'=>'Graphic Design',    'level'=>80],
+  ['name'=>'PHP',    'level'=>70],
+  ['name'=>'JavaScript',    'level'=>67],
+  ['name'=>'MySQL',    'level'=>69],
+  ['name'=>'C / C++',    'level'=>81],
+];

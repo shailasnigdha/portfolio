@@ -1,12 +1,8 @@
-<?php include 'header.php'; ?>
-<section class="projects">
-    <h2>My Projects</h2>
-    <div class="project-list">
-        <div class="card"><h3>1. Student Database</h3><p>Using C</p></div>
-        <div class="card"><h3>2. Quiz Game</h3><p>Using C++</p></div>
-        <div class="card"><h3>3. Digital Clock</h3><p>Using DLD</p></div>
-        <div class="card"><h3>4. Android App</h3><p>Using Android Studio</p></div>
-        <div class="card"><h3>5. CPU Simulation</h3><p>Computer Architecture (EMU)</p></div>
-    </div>
-</section>
-<?php include 'footer.php'; ?>
+<?php return [
+  ['title'=>'Student Database (C)', 'category'=>'dev','tags'=>['dev'],'image'=>'assets/img/thumb1.jpg','url'=>'#'],
+  ['title'=>'Quiz Game (C++)', 'category'=>'app','tags'=>['app'],'image'=>'assets/img/thumb2.jpg','url'=>'#'],
+  ['title'=>'Digital Clock (DLD)', 'category'=>'web','tags'=>['web'],'image'=>'assets/img/thumb3.jpg','url'=>'#'],
+  ['title'=>'Android App (Android Studio)', 'category'=>'app','tags'=>['app'],'image'=>'assets/img/thumb4.jpg','url'=>'#'],
+  ['title'=>'CPU Design (Emu)', 'category'=>'dev','tags'=>['dev'],'image'=>'assets/img/thumb5.jpg','url'=>'#'],
+  ['title'=>'Portfolio (PHP)','category'=>'dev','tags'=>['dev'],'image'=>'assets/img/thumb5.jpg','url'=>'#'],
+];

@@ -1,6 +1,1 @@
-</main>
-<footer>
-    <p>&copy; 2025 Shaila Akter. All rights reserved.</p>
-</footer>
-</body>
-</html>
+<footer class="footer"><div class="container"><div class="muted small">&copy; <?php echo date('Y');?> <?php echo e($SITE['name']);?></div></div></footer></body></html>
