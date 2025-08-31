@@ -1,4 +1,5 @@
 
+
 * {
     margin: 0;
     padding: 0;
@@ -11,7 +12,7 @@
 }
 
 :root {
-    --hue: 355;
+    --hue: 120; /* green */
     
     /* Light Theme */
     --bg-color-light: hsl(var(--hue), 30%, 95%);
@@ -25,7 +26,22 @@
     --main-color-dark: hsl(var(--hue), 70%, 60%);
     --text-color-dark: hsl(var(--hue), 100%, 90%);
     
-    /* Default Theme (Light Mode) */
+    /* Ash Theme */
+    --bg-color-ash: #eaeaea;
+    --snd-bf-color-ash: #d5d5d5;
+    --main-color-ash: hsl(var(--hue), 70%, 40%); /* green accent on ash */
+    --text-color-ash: #333333;
+    
+    /* Default Theme (Ash + Green) */
+    --bg-color: var(--bg-color-ash);
+    --snd-bf-color: var(--snd-bf-color-ash);
+    --main-color: var(--main-color-ash);
+    --text-color: var(--text-color-ash);
+}
+
+
+/* Theme Switchers */
+[data-theme="light"] {
     --bg-color: var(--bg-color-light);
     --snd-bf-color: var(--snd-bf-color-light);
     --main-color: var(--main-color-light);
@@ -39,12 +55,13 @@
     --text-color: var(--text-color-dark);
 }
 
-[data-theme="light"] {
-    --bg-color: var(--bg-color-light);
-    --snd-bf-color: var(--snd-bf-color-light);
-    --main-color: var(--main-color-light);
-    --text-color: var(--text-color-light);
+[data-theme="ash"] {
+    --bg-color: var(--bg-color-ash);
+    --snd-bf-color: var(--snd-bf-color-ash);
+    --main-color: var(--main-color-ash);
+    --text-color: var(--text-color-ash);
 }
+
 
 /* Solid background for style switcher */
 .style-switcher {
@@ -69,6 +86,56 @@
 .style-switcher-color[data-hue="45"]  { background-color: hsl(45,  70%, 50%); }
 .style-switcher-color[data-hue="280"] { background-color: hsl(280, 70%, 50%); }
 
+.project-popup {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex; justify-content: center; align-items: center;
+  z-index: 1000;
+}
+.project-popup-inner {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+}
+.project-popup-close {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 1.5rem; cursor: pointer;
+}
+
 
 html {
     font-size: 62.5%; 
@@ -81,6 +148,41 @@ body {
     font-size: 1.6rem;
     overflow-x: hidden;
 }
+
+/* ================== Skill Modal ================== */
+.skill-modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.skill-modal-content {
+  background: var(--snd-bf-color);
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+.skill-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--main-color);
+}
+
+
 
 /* ========== HEADER STYLING ========== */
 .header {
@@ -135,6 +237,42 @@ body {
     color: var(--text-color);
     cursor: pointer;
 }
+
+/* Dashboard Messages Table */
+.dashboard-container {
+  margin: 2rem auto;
+  overflow-x: auto;
+}
+
+.dashboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--snd-bf-color);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.dashboard-table th,
+.dashboard-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.dashboard-table th {
+  background: var(--main-color);
+  color: #fff;
+}
+
+.dashboard-table tr:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+.dashboard-table td {
+  vertical-align: top;
+}
+
 
 /* ========== HOME SECTION ========== */
 .home {

@@ -3,8 +3,8 @@
   <div class="home-content">
     <h3>Hello, I'm</h3>
     <h1>Shaila Akter</h1>
-    <h3>And I'm a <span id="typed-span">Web Developer</span></h3>
-    <p>Welcome to my portfolio! I specialize in building stylish, responsive web apps.</p>
+    <h3>And I'm a <span class="multiple-text"></span></h3>
+    <p>A passionate Full-Stack Web Developer and Programmer with experience in building<br> responsive websites, database-driven applications and creative projects.</p>
     <div class="social-media">
       <a href="https://www.facebook.com/shailahk.snigdha" target="_blank" class="social-link fb"><i class="fab fa-facebook-f"></i></a>
       <a href="https://github.com/shailasnigdha" target="_blank" class="social-link github"><i class="fab fa-github"></i></a>

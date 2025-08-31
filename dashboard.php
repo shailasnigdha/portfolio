@@ -1,88 +1,44 @@
-<?php 
-include '../includes/db.php';
-session_start();
+<?php
+$pageTitle = "Dashboard — Messages";
+include 'includes/header.php';
+include 'includes/db.php';
 
-if(!isset($_SESSION['username'])){
-    header("Location: ../login.php");
-    exit();
-}
-
-// Fetch data
-$contacts = $conn->query("SELECT * FROM contact ORDER BY created_ar DESC");
-$projects = $conn->query("SELECT * FROM projects ORDER BY created_ar DESC");
+// Fetch all messages
+$sql = "SELECT id, name, email, message, created_at FROM contacts ORDER BY created_at DESC";
+$result = $conn->query($sql);
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Admin Dashboard</title>
-  <link rel="stylesheet" href="../assets/css/style.css">
-</head>
-<body>
+<section class="dashboard">
+  <h2 class="heading"><i class="fa-solid fa-inbox"></i> Inbox <span>Messages</span></h2>
 
-<div class="sidebar">
-  <h2>⚡ Admin</h2>
-  <a href="dashboard.php">📊 Dashboard</a>
-  <a href="projects.php">💻 Projects</a>
-  <a href="messages.php">📬 Messages</a>
-  <a href="add_project.php">➕ Add Project</a>
-  <a href="logout.php" class="logout">🚪 Logout</a>
-</div>
-
-<div class="main-content">
   <div class="dashboard-container">
-      <h1>Admin Dashboard</h1>
-
-      <div class="dashboard-cards">
-          <div class="dashboard-card">
-              <h2>📬 Messages</h2>
-              <table>
-                  <tr>
-                      <th>ID</th><th>Name</th><th>Email</th><th>Message</th><th>Date</th>
-                  </tr>
-                  <?php while($row = $contacts->fetch_assoc()): ?>
-                  <tr>
-                      <td><?= $row['id'] ?></td>
-                      <td><?= htmlspecialchars($row['name']) ?></td>
-                      <td><?= htmlspecialchars($row['email']) ?></td>
-                      <td><?= htmlspecialchars($row['message']) ?></td>
-                      <td><?= $row['created_ar'] ?></td>
-                  </tr>
-                  <?php endwhile; ?>
-              </table>
-          </div>
-
-          <div class="dashboard-card">
-              <h2>💻 Projects</h2>
-              <table>
-                  <tr>
-                      <th>ID</th><th>Title</th><th>Description</th><th>Image</th><th>Link</th><th>Date</th>
-                  </tr>
-                  <?php while($row = $projects->fetch_assoc()): ?>
-                  <tr>
-                      <td><?= $row['id'] ?></td>
-                      <td><?= htmlspecialchars($row['title']) ?></td>
-                      <td><?= htmlspecialchars($row['description']) ?></td>
-                      <td>
-                          <?php if(!empty($row['image'])): ?>
-                              <img src="../uploads/<?= htmlspecialchars($row['image']) ?>" width="50">
-                          <?php endif; ?>
-                      </td>
-                      <td>
-                          <?php if(!empty($row['link'])): ?>
-                              <a href="<?= htmlspecialchars($row['link']) ?>" target="_blank">🔗</a>
-                          <?php endif; ?>
-                      </td>
-                      <td><?= $row['created_ar'] ?></td>
-                  </tr>
-                  <?php endwhile; ?>
-              </table>
-              <a class="btn-primary" href="add_project.php">➕ Add New Project</a>
-          </div>
-      </div>
+    <?php if ($result && $result->num_rows > 0): ?>
+      <table class="dashboard-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php while ($row = $result->fetch_assoc()): ?>
+            <tr>
+              <td><?= htmlspecialchars($row['id']) ?></td>
+              <td><?= htmlspecialchars($row['name']) ?></td>
+              <td><?= htmlspecialchars($row['email']) ?></td>
+              <td><?= nl2br(htmlspecialchars($row['message'])) ?></td>
+              <td><?= htmlspecialchars($row['created_at']) ?></td>
+            </tr>
+          <?php endwhile; ?>
+        </tbody>
+      </table>
+    <?php else: ?>
+      <p class="notice">No messages yet.</p>
+    <?php endif; ?>
   </div>
-</div>
+</section>
 
-</body>
-</html>
+<?php include 'includes/footer.php'; ?>
