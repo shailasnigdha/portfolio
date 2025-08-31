@@ -124,13 +124,13 @@ switcherClose.addEventListener('click', () => {
 const colors = document.querySelectorAll('.style-switcher-color');
 colors.forEach(color => {
     color.addEventListener('click', () => {
-        const activeColor = color.style.getPropertyValue('--hue');
+        const activeColor = color.dataset.hue; // <-- FIX: use dataset
 
-        // Remove active class from previous selection
+        // Remove active class
         colors.forEach(c => c.classList.remove('active-color'));
         color.classList.add('active-color');
 
-        // Apply new hue to root
+        // Apply hue globally
         document.documentElement.style.setProperty('--hue', activeColor);
     });
 });

@@ -39,6 +39,37 @@
     --text-color: var(--text-color-dark);
 }
 
+[data-theme="light"] {
+    --bg-color: var(--bg-color-light);
+    --snd-bf-color: var(--snd-bf-color-light);
+    --main-color: var(--main-color-light);
+    --text-color: var(--text-color-light);
+}
+
+/* Solid background for style switcher */
+.style-switcher {
+    background: #fff;   /* Solid background */
+    color: #000;        /* Adjust text color */
+}
+
+/* Color circles now show real hues */
+.style-switcher-color {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    background-color: hsl(var(--hue), 70%, 50%);
+}
+
+/* Each circle uses its own hue */
+.style-switcher-color[data-hue="355"] { background-color: hsl(355, 70%, 50%); }
+.style-switcher-color[data-hue="220"] { background-color: hsl(220, 70%, 50%); }
+.style-switcher-color[data-hue="120"] { background-color: hsl(120, 70%, 50%); }
+.style-switcher-color[data-hue="45"]  { background-color: hsl(45,  70%, 50%); }
+.style-switcher-color[data-hue="280"] { background-color: hsl(280, 70%, 50%); }
+
+
 html {
     font-size: 62.5%; 
     overflow-x: hidden;

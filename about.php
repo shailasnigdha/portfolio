@@ -1,17 +1,39 @@
-<section class="card"><h1>About Me</h1><p class="lead"><?php echo e($SITE['tagline']);?></p><p>I'm a KUET CSE student with interests in development and design. I enjoy learning new technologies and collaborating on projects.</p></section>
-<section class="grid four"><article class="card">
-    <h3>Web Design</h3>
-    <p>I make high-quality designs for any category at a professional level.</p>
-  </article>
-  <article class="card">
-    <h3>Web Development</h3>
-    <p>From landing pages to full-stack apps using PHP, C, C++, MySQL, and Android.</p>
-  </article>
-  <article class="card">
-    <h3>Mobile Apps</h3>
-    <p>Cross-platform prototypes and PWA experiences.</p>
-  </article>
-  <article class="card">
-    <h3>Photography</h3>
-    <p>I love snapping minimal, moody cityscapes.</p>
-  </article><article class="card"><h3>Projects</h3><p>Academic and hobby projects across systems and apps.</p></article><article class="card"><h3>Volunteering</h3><p>Volunteer work and district visits.</p></article></section>
+<?php $pageTitle = "About — Shaila Akter"; include 'includes/header.php'; ?>
+<section class="about">
+  <div class="about-img">
+    <img src="assets/avatar.jpg" alt="profile picture">
+  </div>
+  <div class="about-content">
+    <h2 class="heading">About <span>Me</span></h2>
+    <h3>Full Stack Developer</h3>
+    <p>I love creating beautiful and functional web applications with modern technologies.</p>
+    <a href="#" class="btn">Read more</a>
+  </div>
+</section>
+
+<section class="education">
+  <h2 class="heading"><i class="fa-solid fa-graduation-cap"></i> My <span>Education</span></h2>
+  <div class="education-content">
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="circle-dot"></span>
+        <h3 class="timeline-title">Bachelor of Science (B.Sc) in Computer Science and Engineering</h3>
+        <p class="timeline-text">Khulna University of Engineering and Technology (KUET)</p>
+        <span class="timeline-date"><i class="fa-solid fa-calendar-days"></i> 2023 - Ongoing</span>
+      </div>
+      <div class="timeline-item">
+        <span class="circle-dot"></span>
+        <h3 class="timeline-title">Higher Secondary School Certificate (HSC)</h3>
+        <p class="timeline-text">Bir Shrestha Munshi Abdur Rouf Public College</p>
+        <span class="timeline-date"><i class="fa-solid fa-calendar-days"></i> 2019 - 2021</span>
+      </div>
+      <div class="timeline-item">
+        <span class="circle-dot"></span>
+        <h3 class="timeline-title">Secondary School Certificate (SSC)</h3>
+        <p class="timeline-text">Dhanmondi Kamrunnesa Govt. Girls High School</p>
+        <span class="timeline-date"><i class="fa-solid fa-calendar-days"></i> 2012 - 2019</span>
+      </div>
+    </div>
+  </div>
+</section>
+<?php include 'includes/footer.php'; ?>
