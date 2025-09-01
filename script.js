@@ -137,37 +137,37 @@ document.addEventListener("DOMContentLoaded", function () {
 // ================== Skills Modal Handler ==================
 document.addEventListener("DOMContentLoaded", () => {
   const modal = document.getElementById("skillModal");
-  const modalTitle = document.getElementById("modal-title");
-  const modalText = document.getElementById("modal-text");
-  const closeBtn = document.querySelector(".skill-modal-close");
+  const modalTitle = document.getElementById("skill-modal-title");
+  const modalText = document.getElementById("skill-modal-body");
+  const closeBtn = document.querySelector(".skill-modal__close");
 
   if (modal && modalTitle && modalText && closeBtn) {
-    // Open modal when clicking "Read more"
-    document.querySelectorAll(".btn read-more").forEach(btn => {
+    // Open modal on "Read More"
+    document.querySelectorAll(".btn.read-more").forEach(btn => {
       btn.addEventListener("click", (e) => {
         e.preventDefault();
         modalTitle.textContent = btn.dataset.title || "Skill";
         modalText.textContent = btn.dataset.text || "No description available.";
-        modal.classList.add("active");
+        modal.classList.add("open");
       });
     });
 
-    // Close modal when clicking X
+    // Close modal with X
     closeBtn.addEventListener("click", () => {
-      modal.classList.remove("active");
+      modal.classList.remove("open");
     });
 
-    // Close modal when clicking outside
-    window.addEventListener("click", (e) => {
+    // Close modal on outside click
+    modal.addEventListener("click", (e) => {
       if (e.target === modal) {
-        modal.classList.remove("active");
+        modal.classList.remove("open");
       }
     });
 
-    // Close modal on ESC key
+    // Close modal with ESC
     window.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
-        modal.classList.remove("active");
+        modal.classList.remove("open");
       }
     });
   }
