@@ -61,48 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// Style Switcher Toggle
-const styleSwitcher = document.getElementById('style-switcher'),
-      switcherToggle = document.getElementById('switcher-toggle'),
-      switcherClose = document.getElementById('switcher-close');
-
-if (switcherToggle && styleSwitcher) {
-    switcherToggle.addEventListener('click', () => styleSwitcher.classList.add('show-switcher'));
-}
-if (switcherClose && styleSwitcher) {
-    switcherClose.addEventListener('click', () => styleSwitcher.classList.remove('show-switcher'));
-}
-
-// Change color theme
-const colors = document.querySelectorAll('.style-switcher-color');
-colors.forEach(color => {
-    color.addEventListener('click', () => {
-        const activeColor = color.dataset.hue;
-        colors.forEach(c => c.classList.remove('active-color'));
-        color.classList.add('active-color');
-        document.documentElement.style.setProperty('--hue', activeColor);
-    });
-});
-
-// Theme Switcher (Light / Dark / Ash)
-const themeInputs = document.querySelectorAll('input[name="body-theme"]');
-themeInputs.forEach(input => {
-    input.addEventListener('change', () => {
-        document.documentElement.setAttribute('data-theme', input.value);
-    });
-});
-
-/* =======================
-   FORCE DEFAULT THEME = ASH + GREEN
-======================= */
-document.addEventListener("DOMContentLoaded", () => {
-    document.documentElement.setAttribute('data-theme', 'ash');
-    document.documentElement.style.setProperty('--hue', 120); // green
-});
-
-/* =======================
-   MIXITUP (Projects page only)
-======================= */
+// MIXITUP (Projects page only)
 if (document.querySelector('.project-container')) {
     mixitup('.project-container', {
         selectors: { target: '.project-card' },
@@ -118,9 +77,7 @@ function activeWork() {
 }
 linkWork.forEach(l => l.addEventListener('click', activeWork));
 
-/* =======================
-   PROJECT POPUP HANDLER
-======================= */
+// PROJECT POPUP HANDLER
 document.addEventListener('click', (e) => {
     if (e.target.classList.contains('project-button')) {
         toggleProjectPopup();
@@ -151,9 +108,7 @@ function projectItemDetails(projectItem) {
     if (popupBody && details) popupBody.innerHTML = details.innerHTML;
 }
 
-/* =======================
-   ABOUT MODAL HANDLER
-======================= */
+// ABOUT MODAL HANDLER
 document.addEventListener("DOMContentLoaded", function () {
   const readMoreBtn = document.getElementById('open-about-modal');
   const modal = document.getElementById('about-modal');
@@ -161,54 +116,58 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (!(readMoreBtn && modal && closeBtn)) return;
 
-  // Open modal
   readMoreBtn.addEventListener('click', function (e) {
     e.preventDefault();
     modal.style.display = 'flex';
   });
 
-  // Close modal
   closeBtn.addEventListener('click', function () {
     modal.style.display = 'none';
   });
 
-
-  // Close when clicking outside
   window.addEventListener('click', function (e) {
     if (e.target === modal) modal.style.display = 'none';
   });
 
-  // Close on ESC
   window.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') modal.style.display = 'none';
   });
 });
 
-// ================== Skills Modal ==================
+// ================== Skills Modal Handler ==================
 document.addEventListener("DOMContentLoaded", () => {
   const modal = document.getElementById("skillModal");
   const modalTitle = document.getElementById("modal-title");
   const modalText = document.getElementById("modal-text");
   const closeBtn = document.querySelector(".skill-modal-close");
 
-  // Ensure modal exists before binding
   if (modal && modalTitle && modalText && closeBtn) {
-    document.querySelectorAll(".read-more").forEach(btn => {
+    // Open modal when clicking "Read more"
+    document.querySelectorAll(".btn read-more").forEach(btn => {
       btn.addEventListener("click", (e) => {
         e.preventDefault();
         modalTitle.textContent = btn.dataset.title || "Skill";
         modalText.textContent = btn.dataset.text || "No description available.";
-        modal.style.display = "flex";
+        modal.classList.add("active");
       });
     });
 
+    // Close modal when clicking X
     closeBtn.addEventListener("click", () => {
-      modal.style.display = "none";
+      modal.classList.remove("active");
     });
 
+    // Close modal when clicking outside
     window.addEventListener("click", (e) => {
       if (e.target === modal) {
-        modal.style.display = "none";
+        modal.classList.remove("active");
+      }
+    });
+
+    // Close modal on ESC key
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        modal.classList.remove("active");
       }
     });
   }

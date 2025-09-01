@@ -1,6 +1,5 @@
 <?php
 $pageTitle = "Projects — Shaila Akter";
-include 'includes/header.php';
 include 'includes/db.php';
 
 // Fetch all projects (newest first)
@@ -10,8 +9,13 @@ $result = $stmt->get_result();
 ?>
 <section class="project section" id="project">
   <h2 class="heading section-title">
-    <i class="fa-solid fa-diagram-project"></i> My <span>Projects</span>
+    <i class="fa-solid fa-user-gear"></i> My <span>Projects</span>
   </h2>
+
+  <!-- Add Project Button -->
+  <div style="margin-bottom:20px;">
+    <a href="add_project.php" class="btn">➕ Add Project</a>
+  </div>
 
   <div class="project-container container grid" id="projects-grid">
     <?php if ($result->num_rows === 0): ?>
@@ -58,4 +62,12 @@ $result = $stmt->get_result();
   </div>
 </div>
 
-<?php include 'includes/footer.php'; ?>
+<footer class="footer">
+  <div class="footer-text">
+    <p>&copy; <?= date('Y') ?> Shaila Akter | All rights reserved.</p>
+  </div>
+  <div class="footer-iconTop">
+    <a href="#"><i class="fa-solid fa-angle-up"></i></a>
+  </div>
+</footer>
+

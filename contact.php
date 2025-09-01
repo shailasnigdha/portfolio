@@ -1,6 +1,3 @@
-
-
-
 <?php
 $pageTitle = "Contact — Shaila Akter";
 include 'includes/header.php';
@@ -34,39 +31,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <section class="contact">
-  <h2 class="heading"><i class="fa-regular fa-address-book"></i> Contact <span>Me</span></h2>
+  <h2 class="heading"><i class="fa-solid fa-phone"></i> Contact <span>Me</span></h2>
 
   <?php if ($notice): ?>
     <p class="notice"><?= htmlspecialchars($notice) ?></p>
   <?php endif; ?>
 
   <div class="contact-container container grid">
-    <!-- Contact info cards -->
-    <div class="contact-content">
-      <div class="contact-card">
-        <span class="contact-icon"><i class="fa-solid fa-map-location-dot"></i></span>
-        <div class="contact-info">
-          <h3 class="contact-title">Address</h3>
-          <p class="contact-data">Rokeya Hall, KUET, Khulna</p>
-        </div>
-      </div>
-
-      <div class="contact-card">
-        <span class="contact-icon"><i class="fa-solid fa-envelope"></i></span>
-        <div class="contact-info">
-          <h3 class="contact-title">Email</h3>
-          <p class="contact-data">shailasnigdha28@gmail.com</p>
-        </div>
-      </div>
-
-      <div class="contact-card">
-        <span class="contact-icon"><i class="fa-brands fa-whatsapp"></i></span>
-        <div class="contact-info">
-          <h3 class="contact-title">WhatsApp</h3>
-          <p class="contact-data">01822817919</p>
-        </div>
-      </div>
-    </div>
 
     <!-- Contact form -->
     <form method="POST" action="contact.php" class="contact-form">
@@ -77,6 +48,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <textarea name="message" cols="30" rows="8" placeholder="Your Message" required></textarea>
       <button type="submit" class="btn">Send Message</button>
     </form>
+
+    <!-- Contact info cards -->
+    <div class="contact-content">
+      <div class="contact-card">
+        <span class="contact-icon"><i class="fa-solid fa-location-dot"></i></span>
+        <div class="contact-info">
+          <h3 class="contact-title">Address</h3>
+          <p class="contact-data">Rokeya Hall, KUET, Khulna</p>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <span class="contact-icon"><i class="fa-regular fa-envelope-open"></i></span>
+        <div class="contact-info">
+          <h3 class="contact-title">Email</h3>
+          <p class="contact-data">shailasnigdha28@gmail.com</p>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <span class="contact-icon"><i class="fa-solid fa-comment-dots"></i></span>
+        <div class="contact-info">
+          <h3 class="contact-title">WhatsApp</h3>
+          <p class="contact-data">01822817919</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 

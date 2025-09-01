@@ -1,5 +1,3 @@
-
-
 * {
     margin: 0;
     padding: 0;
@@ -12,79 +10,27 @@
 }
 
 :root {
-    --hue: 120; /* green */
-    
-    /* Light Theme */
-    --bg-color-light: hsl(var(--hue), 30%, 95%);
-    --snd-bf-color-light: hsl(var(--hue), 60%, 90%);
-    --main-color-light: hsl(var(--hue), 70%, 50%);
-    --text-color-light: hsl(var(--hue), 20%, 20%);
-    
+    --hue: 210; /* Blue accent */
+
     /* Dark Theme */
-    --bg-color-dark: hsl(var(--hue), 10%, 8%);
-    --snd-bf-color-dark: hsl(var(--hue), 10%, 12%);
-    --main-color-dark: hsl(var(--hue), 70%, 60%);
-    --text-color-dark: hsl(var(--hue), 100%, 90%);
-    
-    /* Ash Theme */
-    --bg-color-ash: #eaeaea;
-    --snd-bf-color-ash: #d5d5d5;
-    --main-color-ash: hsl(var(--hue), 70%, 40%); /* green accent on ash */
-    --text-color-ash: #333333;
-    
-    /* Default Theme (Ash + Green) */
-    --bg-color: var(--bg-color-ash);
-    --snd-bf-color: var(--snd-bf-color-ash);
-    --main-color: var(--main-color-ash);
-    --text-color: var(--text-color-ash);
+    --bg-color: hsl(var(--hue), 10%, 8%);      /* dark background */
+    --snd-bf-color: hsl(var(--hue), 10%, 12%); /* slightly lighter dark */
+    --main-color: hsl(var(--hue), 70%, 55%);   /* bright blue accent */
+    --text-color: hsl(var(--hue), 20%, 95%);   /* near white text */
 }
 
 
-/* Theme Switchers */
-[data-theme="light"] {
-    --bg-color: var(--bg-color-light);
-    --snd-bf-color: var(--snd-bf-color-light);
-    --main-color: var(--main-color-light);
-    --text-color: var(--text-color-light);
+html {
+    font-size: 62.5%; 
+    overflow-x: hidden;
 }
 
-[data-theme="dark"] {
-    --bg-color: var(--bg-color-dark);
-    --snd-bf-color: var(--snd-bf-color-dark);
-    --main-color: var(--main-color-dark);
-    --text-color: var(--text-color-dark);
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: 1.6rem;
+    overflow-x: hidden;
 }
-
-[data-theme="ash"] {
-    --bg-color: var(--bg-color-ash);
-    --snd-bf-color: var(--snd-bf-color-ash);
-    --main-color: var(--main-color-ash);
-    --text-color: var(--text-color-ash);
-}
-
-
-/* Solid background for style switcher */
-.style-switcher {
-    background: #fff;   /* Solid background */
-    color: #000;        /* Adjust text color */
-}
-
-/* Color circles now show real hues */
-.style-switcher-color {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    position: relative;
-    cursor: pointer;
-    background-color: hsl(var(--hue), 70%, 50%);
-}
-
-/* Each circle uses its own hue */
-.style-switcher-color[data-hue="355"] { background-color: hsl(355, 70%, 50%); }
-.style-switcher-color[data-hue="220"] { background-color: hsl(220, 70%, 50%); }
-.style-switcher-color[data-hue="120"] { background-color: hsl(120, 70%, 50%); }
-.style-switcher-color[data-hue="45"]  { background-color: hsl(45,  70%, 50%); }
-.style-switcher-color[data-hue="280"] { background-color: hsl(280, 70%, 50%); }
 
 .project-popup {
   position: fixed;
@@ -110,76 +56,71 @@
   cursor: pointer;
 }
 
+/* Floating Modal Overlay */
 .modal {
   display: none;
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.modal-content {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 10px;
-  max-width: 600px;
-  width: 90%;
-  position: relative;
-}
-
-.close-btn {
-  position: absolute;
-  top: 10px; right: 15px;
-  font-size: 1.5rem; cursor: pointer;
-}
-
-
-html {
-    font-size: 62.5%; 
-    overflow-x: hidden;
-}
-
-body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-size: 1.6rem;
-    overflow-x: hidden;
-}
-
-/* ================== Skill Modal ================== */
-.skill-modal {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
+  inset: 0; /* shorthand for top/left/right/bottom */
+  background: rgba(0, 0, 0, 0.75);
   justify-content: center;
   align-items: center;
   z-index: 2000;
+  animation: fadeIn 0.4s ease;
 }
 
-.skill-modal-content {
-  background: var(--snd-bf-color);
-  padding: 2rem;
-  border-radius: 10px;
-  max-width: 600px;
+/* Modal Content Box */
+.modal-content {
+  background: linear-gradient(135deg, hsl(210, 35%, 14%), hsl(210, 30%, 6%));
+  padding: 3rem;
+  border-radius: 1.2rem;
+  max-width: 650px;
   width: 90%;
   text-align: center;
+  color: var(--text-color);
+  border: 2px solid var(--main-color);
+  box-shadow: 0 0 25px rgba(0, 150, 255, 0.6),
+              0 0 50px rgba(0, 150, 255, 0.3);
   position: relative;
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  animation: slideUp 0.4s ease;
 }
 
-.skill-modal-close {
+/* Close Button */
+.close-btn {
   position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 2rem;
+  top: 15px;
+  right: 20px;
+  font-size: 2.4rem;
   font-weight: bold;
-  cursor: pointer;
   color: var(--main-color);
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.close-btn:hover {
+  transform: rotate(90deg) scale(1.2);
+  color: hsl(210, 80%, 70%);
+}
+
+/* Modal Headings */
+.modal-content h2 {
+  font-size: 2.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--main-color);
+  text-shadow: 0 0 10px rgba(0, 150, 255, 0.4);
+}
+.modal-content p {
+  font-size: 1.6rem;
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
 
@@ -278,34 +219,70 @@ body {
 .home {
     display: flex;
     align-items: center;
-    justify-content: flex-start; 
-    padding: 8rem 5%;
+    justify-content: space-between;
+    padding: 6rem 8%;
     min-height: 100vh;
+    background: linear-gradient(135deg, hsl(210, 35%, 15%), hsl(210, 30%, 6%));
+    color: var(--text-color);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative glowing effect */
+.home::before,
+.home::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: 0;
+}
+
+.home::before {
+    width: 320px;
+    height: 320px;
+    background: rgba(0, 150, 255, 0.25);
+    top: -60px;
+    left: -100px;
+}
+
+.home::after {
+    width: 380px;
+    height: 380px;
+    background: rgba(0, 200, 255, 0.18);
+    bottom: -120px;
+    right: -150px;
 }
 
 .home-content {
-    text-align: left;
-    margin-left: 2 rem;
+    position: relative;
+    z-index: 1;
+    max-width: 55%;
 }
 
 .home-content h3 {
-    font-size: 3.2rem;
+    font-size: 3rem;
     font-family: "Montserrat Alternates", sans-serif;
+    font-weight: 500;
     color: var(--text-color);
+    margin-bottom: 1rem;
 }
 
 .home-content h3:nth-of-type(2) {
     color: var(--main-color);
+    font-weight: 600;
     margin-bottom: 2rem;
+    text-shadow: 0 0 12px rgba(0, 150, 255, 0.6);
 }
 
 .home-content h1 {
-    font-size: 5.6rem;
-    font-weight: 700;
-    font-family: "Montserrat Alternates", sans-serif;    
+    font-size: 6rem;
+    font-weight: 800;
+    font-family: "Montserrat Alternates", sans-serif;
     color: var(--text-color);
-    line-height: 1.3;
-    margin-bottom: 1rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
 }
 
 span {
@@ -313,34 +290,46 @@ span {
 }
 
 .home-content p {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: 400;
+    line-height: 1.6;
     color: var(--text-color);
-    margin: 2rem 0;
+    margin: 2rem 0 3rem;
+    opacity: 0.9;
 }
 
 /* ========== HOME IMAGE ========== */
 .home-img-container {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: absolute; 
-    right: 5rem; 
+    position: absolute;
+    right: 6rem;
     top: 50%;
-    margin-right: 5rem;
-    transform: translateY(-50%); 
+    transform: translateY(-50%);
+    z-index: 1;
 }
 
 #home-img {
-    width: 380px;
-    border-radius: 50%;
+    width: 360px;
+    height: 360px;
     object-fit: cover;
-    display: block;
-    border: 4px solid var(--main-color);
-    box-shadow: 0 0 1rem var(--main-color);
-    animation: floatimage 4s ease-in-out infinite;
+
+    /* Hexagon shape */
+    -webkit-clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+    clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+
+    box-shadow: 0 0 25px rgba(0, 150, 255, 0.5),
+                0 0 50px rgba(0, 150, 255, 0.3);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
+
+#home-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 35px rgba(0, 150, 255, 0.7),
+                0 0 70px rgba(0, 150, 255, 0.4);
+}
+
 
 #img-prof {
     width: 100%;
@@ -380,10 +369,6 @@ span {
     animation: floaticon 3s ease-in-out infinite;
 }
 
-.skype {
-    animation: floaticon 4s ease-in-out infinite;
-}
-
 .linkedin {
     animation: floaticon 5s ease-in-out infinite;
 }
@@ -416,221 +401,472 @@ span {
     }
 }
 
-/* ========== About STYLING ========== */
-
+/* ========== ABOUT SECTION ========== */
 .about {
-    display: flex; /* Stack content vertically */
-    align-items: center; /* Center content */
+    display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 5rem;
-    background: var(--snd-bf-color);
-    padding: 5rem 10%; 
+    gap: 8rem;
+    background: linear-gradient(135deg, hsl(210, 40%, 12%), hsl(210, 30%, 4%));
+    padding: 8rem 10%;
     min-height: 100vh;
+    position: relative;
+    overflow: hidden;
 }
 
-.about-img img{
-    width: 25vw;
-    max-width: 250px;
-    border-radius: 2rem;
-    border: 10px solid var(--main-color);
+/* Decorative glowing aura */
+.about::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: rgba(0, 150, 255, 0.12);
+    border-radius: 50%;
+    filter: blur(180px);
+    top: -120px;
+    left: -150px;
+    z-index: 0;
+}
+.about::after {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background: rgba(0, 150, 255, 0.08);
+    border-radius: 50%;
+    filter: blur(150px);
+    bottom: -80px;
+    right: -100px;
+    z-index: 0;
 }
 
+/* Profile Image */
+.about-img {
+    position: relative;
+    z-index: 1;
+}
+.about-img img {
+    width: 300px;
+    height: auto;
+    border-radius: 1.5rem;
+    border: 8px solid var(--main-color);
+    box-shadow: 0 0 30px rgba(0, 150, 255, 0.6),
+                0 0 60px rgba(0, 150, 255, 0.4);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+.about-img img:hover {
+    transform: scale(1.07) rotate(2deg);
+    box-shadow: 0 0 45px rgba(0, 150, 255, 0.8),
+                0 0 90px rgba(0, 150, 255, 0.5);
+}
+
+/* Section Heading */
 .heading {
     text-align: center;
     font-family: "Montserrat Alternates", sans-serif;
-    font-size: 4.5rem;
-}
-
-.about-content h2{
-    text-align: left;
-    line-height: 1.2;
-    font-size: 3.5rem;
-}
-
-.about-content h3{
-    text-align: left;
-    font-size: 2.5rem;
-}
-
-.about-content p{
-    text-align: left;
-    font-size: 1.6rem;
-    margin: 2rem 0 3rem;
-}
-
-/* Education Section */
-.education{
-    padding: 8rem 15%;
-    background: var(--bg-color);
+    font-size: 4.8rem;
+    font-weight: 800;
+    margin-bottom: 3.5rem;
     color: var(--text-color);
+    letter-spacing: 1px;
+    position: relative;
+}
+.heading::after {
+    content: "";
+    display: block;
+    width: 90px;
+    height: 4px;
+    margin: 1rem auto 0;
+    background: var(--main-color);
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(0, 150, 255, 0.7);
 }
 
-.education-content h3{
-    font-size: 2.5rem;
+/* About Content */
+.about-content {
+    position: relative;
+    z-index: 1;
+    max-width: 650px;
+}
+.about-content h2 {
+    text-align: left;
+    line-height: 1.3;
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--main-color);
+    margin-bottom: 1.2rem;
+    text-shadow: 0 0 12px rgba(0, 150, 255, 0.4);
+}
+.about-content h3 {
+    text-align: left;
+    font-size: 2.6rem;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 1.8rem;
+    opacity: 0.9;
+}
+.about-content p {
+    text-align: left;
+    font-size: 1.8rem;
+    line-height: 1.8;
+    margin: 2rem 0 3rem;
+    color: var(--text-color);
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
+}
+.about-content p:hover {
+    opacity: 1;
+}
+
+
+/* ========== EDUCATION SECTION ========== */
+.education {
+    padding: 8rem 12%;
+    background: linear-gradient(135deg, hsl(210, 35%, 15%), hsl(210, 30%, 6%));
+    color: var(--text-color);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Glow decoration */
+.education::before {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background: rgba(0, 150, 255, 0.15);
+    border-radius: 50%;
+    filter: blur(120px);
+    top: -80px;
+    left: -100px;
+}
+
+.education-content h3 {
+    font-size: 3rem;
     font-family: "Montserrat Alternates", sans-serif;
-    margin-bottom: 2rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    text-align: center;
+    color: var(--main-color);
+    position: relative;
+}
+
+.education-content h3::after {
+    content: "";
+    display: block;
+    width: 90px;
+    height: 4px;
+    margin: 1rem auto 0;
+    background: var(--main-color);
+    border-radius: 2px;
 }
 
 .education-container {
     display: flex;
     justify-content: center;
-    gap: 5rem;
-    margin-top: 3rem;
+    gap: 6rem;
+    margin-top: 4rem;
+    flex-wrap: wrap;
 }
 
+/* Timeline */
 .timeline {
     position: relative;
-    margin-top: 3rem;
+    margin-top: 2rem;
+    padding-left: 2rem;
 }
 
-.timeline-item{
+.timeline-item {
     position: relative;
     padding-left: 5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
+    transition: transform 0.3s ease;
 }
 
+.timeline-item:hover {
+    transform: translateX(8px);
+}
+
+/* Vertical line */
 .timeline-item::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
-    left: 0.8rem;
-    width: 2px;
+    left: 1.2rem;
+    width: 3px;
     height: 100%;
-    background-color: var(--main-color);
+    background: linear-gradient(to bottom, var(--main-color), transparent);
 }
 
-.circle-dot{
+/* point indicator with glow */
+.point-indicator {
     position: absolute;
     left: 0;
     top: 0;
     width: 2rem;
     height: 2rem;
-    border: 2px solid var(--main-color);
     background: var(--main-color);
     border-radius: 50%;
-    transition: .5s;
+    box-shadow: 0 0 15px rgba(0, 150, 255, 0.8);
+    transition: 0.4s;
 }
 
-.timeline-item:hover .circle-dot {
+.timeline-item:hover .point-indicator {
     background: var(--bg-color);
+    box-shadow: 0 0 25px rgba(0, 150, 255, 0.9);
 }
 
-/* Skills Section Design */
+
+/* ========== SKILLS SECTION ========== */
 .skills {
-    padding: 6rem 8%; 
+    position: relative;
+    padding: 8rem 10%;
     text-align: center;
-    background: var(--snd-bf-color);
-}
-
-.skills h2 {
-    margin-bottom: 4rem;
-    font-family: "Montserrat Alternates", sans-serif;
+    background: linear-gradient(135deg, hsl(210, 35%, 15%), hsl(210, 30%, 6%));
+    overflow: hidden;
     color: var(--text-color);
 }
 
+/* Section Heading */
+.skills h2 {
+    margin-bottom: 5rem;
+    font-family: "Montserrat Alternates", sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--main-color);
+    position: relative;
+}
+
+.skills h2::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    margin: 1.5rem auto 0;
+    background: var(--main-color);
+    border-radius: 2px;
+}
+
+/* Skills Container */
 .skills-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    gap: 3rem;
+    gap: 3.5rem;
     padding: 2rem 0;
 }
 
-.skills-container .skill-box {
-    flex: 1 1 30rem;
-    padding: 3rem 2rem;
+/* Skill Card */
+.skill-box {
+    flex: 1 1 28rem;
+    padding: 3rem 2.5rem;
     background: var(--snd-bf-color);
-    border: 2px solid var(--bg-color);
+    border: 2px solid transparent;
     border-radius: 1.5rem;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
     text-align: center;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease;
     cursor: pointer;
     position: relative;
     overflow: hidden;
 }
 
-.skills-container .skill-box:hover {
-    transform: translateY(-8px) scale(1.05);
-    border-color: var(--main-color);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+.skill-box::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 150, 255, 0.2), transparent 70%);
+    transform: scale(0);
+    transition: transform 0.5s ease;
 }
 
+.skill-box:hover::before {
+    transform: scale(1);
+}
+
+.skill-box:hover {
+    transform: translateY(-10px) scale(1.05);
+    border-color: var(--main-color);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35),
+                0 0 20px rgba(0, 150, 255, 0.5);
+}
+
+/* ================== Skill Modal ================== */
+.skill-modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.skill-modal.active {
+  display: flex !important;
+}
+
+.skill-modal-content {
+  background: var(--snd-bf-color);
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 600px;
+  width: 90%;
+  text-align: center;
+  color: var(--text-color);
+  border: 2px solid var(--main-color);
+  box-shadow: 0 0 25px rgba(0, 150, 255, 0.6);
+  position: relative; /* keep close button inside */
+  animation: fadeIn 0.4s ease;
+}
+
+.skill-modal-close {
+  position: absolute;
+  top: 15px; right: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--main-color);
+  transition: transform 0.3s ease;
+}
+.skill-modal-close:hover {
+  transform: rotate(90deg);
+  color: hsl(210, 80%, 70%);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Icons */
 .skill-box i {
     font-size: 6rem;
     color: var(--main-color);
-    transition: color 0.3s ease-in-out;
+    margin-bottom: 1.5rem;
+    transition: transform 0.4s ease, color 0.4s ease;
 }
 
+.skill-box:hover i {
+    transform: scale(1.2);
+    color: hsl(210, 80%, 70%);
+}
+
+/* Title */
 .skill-box h3 {
     font-size: 2.4rem;
-    margin-top: 1.5rem;
     font-weight: 700;
     color: var(--text-color);
+    margin-bottom: 1.2rem;
 }
 
+/* Description */
 .skill-box p {
     font-size: 1.5rem;
-    margin: 1.2rem 0 2.5rem;
     line-height: 1.6;
     color: var(--text-color);
+    opacity: 0.9;
 }
 
+/* Button */
 .btn {
     display: inline-block;
     background: var(--main-color);
-    color: var(--text-color);
-    padding: 1rem 2rem;
+    color: #fff;
+    padding: 1rem 2.5rem;
     font-size: 1.6rem;
     font-weight: 600;
     border-radius: 4rem;
     cursor: pointer;
     letter-spacing: 0.05rem;
     margin-top: 2rem;
-    box-shadow: 0 0 1rem var(--main-color);
+    box-shadow: 0 0 15px var(--main-color);
     transition: all 0.3s ease-in-out;
+    text-decoration: none;
 }
 
 .btn:hover {
-    background-color: #468dc9;
-    box-shadow: none;
+    background: hsl(210, 80%, 60%);
+    box-shadow: 0 0 25px hsl(210, 80%, 60%);
 }
 
-
+/* Floating Popup Box for About */
 .popup-box {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
     justify-content: center;
     align-items: center;
+    z-index: 2000;
+    animation: fadeIn 0.4s ease;
 }
 
 .popup-content {
     background: var(--snd-bf-color);
-    padding: 20px;
-    border-radius: 8px;
-    width: 300px;
+    padding: 3rem;
+    border-radius: 1rem;
+    width: 500px;
+    max-width: 90%;
     text-align: center;
+    box-shadow: 0 0 25px rgba(0, 150, 255, 0.6);
+    position: relative;
+    animation: slideUp 0.4s ease;
 }
 
+.popup-content h3 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--main-color);
+    text-shadow: 0 0 12px rgba(0, 150, 255, 0.4);
+}
+
+.popup-content p {
+    font-size: 1.6rem;
+    line-height: 1.7;
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+/* Close button */
 .close-btn {
     position: absolute;
-    top: 10px;
+    top: 15px;
     right: 20px;
-    font-size: 24px;
+    font-size: 2.8rem;
+    color: var(--main-color);
     cursor: pointer;
+    transition: transform 0.3s ease;
 }
+.close-btn:hover {
+    transform: rotate(90deg);
+    color: hsl(210, 80%, 70%);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes slideUp {
+    from { transform: translateY(40px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
 
 /* ========== PROJECTS SECTION ========== */
 #project {
-    padding: 6rem 8%; 
+    position: relative;
+    padding: 8rem 10%;
     text-align: center;
-    background-color: var(--bg-color);
+    background: linear-gradient(135deg, hsl(210, 30%, 17%), hsl(210, 30%, 8%));
+    overflow: hidden;
 }
 
 .project-container {
@@ -867,11 +1103,14 @@ span {
 
 /* ========== CONTACT SECTION ========== */
 .contact {
-    padding: 6rem 10%; 
+    position: relative;
+    padding: 8rem 12%;
     text-align: center;
-    background: var(--bg-color);
+    background: linear-gradient(135deg, hsl(210, 35%, 15%), hsl(210, 30%, 6%));
     color: var(--text-color);
     font-family: "Montserrat Alternates", sans-serif;
+    overflow: hidden;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .contact-container {
@@ -1308,3 +1547,72 @@ span {
     .footer-iconTop { width: 4rem; height: 4rem; }
     .footer-iconTop i { font-size: 2rem; }
 }
+
+/* ========== Skills Modal (robust) ========== */
+.skill-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;                 /* used when .open is added */
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.65);
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+}
+.skill-modal.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.skill-modal__content {
+  background: var(--snd-bf-color, hsl(210, 30%, 12%));
+  color: var(--text-color, hsl(210, 100%, 90%));
+  border: 2px solid var(--main-color, hsl(210, 70%, 60%));
+  border-radius: 1rem;
+  width: min(620px, 92vw);
+  padding: 2.2rem 2.6rem 2.4rem;
+  box-shadow:
+    0 0 25px rgba(0,150,255,.55),
+    0 0 50px rgba(0,150,255,.28);
+  transform: translateY(24px);
+  transition: transform .25s ease;
+  position: relative;
+}
+.skill-modal.open .skill-modal__content {
+  transform: translateY(0);
+}
+
+.skill-modal__close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 2.2rem;
+  line-height: 1;
+  border: none;
+  background: transparent;
+  color: var(--main-color, hsl(210,70%,60%));
+  cursor: pointer;
+  padding: .2rem .4rem;
+  transition: transform .25s ease, color .25s ease;
+}
+.skill-modal__close:hover {
+  transform: rotate(90deg) scale(1.1);
+  color: hsl(210, 80%, 70%);
+}
+
+#skill-modal-title {
+  font-size: 2.4rem;
+  margin: .5rem 0 1rem;
+  color: var(--main-color, hsl(210,70%,60%));
+  text-shadow: 0 0 10px rgba(0,150,255,.35);
+}
+#skill-modal-body {
+  font-size: 1.6rem;
+  line-height: 1.7;
+  opacity: .95;
+}
+
+/* Ensure .btn is clickable above any effects */
+.btn.read-more { position: relative; z-index: 1; }

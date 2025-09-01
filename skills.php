@@ -1,41 +1,85 @@
-<?php $pageTitle = "Skills — Shaila Akter"; include 'includes/header.php'; ?>
-<section class="skills">
-  <h2 class="heading">My <span>Skills</span></h2>
+<?php
+  // skills.php
+  $pageTitle = "Skills";
+  include 'includes/header.php';
+?>
+<section class="skills" id="skills">
+  <h2 class="heading"><i class="fa-solid fa-screwdriver-wrench"></i> My <span>Skills</span></h2>
+
   <div class="skills-container">
+    <!-- HTML -->
     <div class="skill-box">
+      <i class="fa-regular fa-file-code"></i>
       <h3>HTML</h3>
-      <p>Semantic and accessible markup.</p>
-      <a href="#" class="btn read-more" data-title="HTML" data-text="HTML (HyperText Markup Language) is the standard markup language used to create the structure of web pages. I use semantic HTML to build well-organized, accessible and SEO-friendly websites. My knowledge covers elements, attributes, forms, media embedding, accessibility (ARIA), and responsive page layouts.">Read more</a>
+      <p>Semantic, accessible structure for SEO and performance.</p>
+      <button type="button"
+              class="btn read-more"
+              data-title="HTML"
+              data-desc="I write semantic HTML that’s accessible, SEO-friendly, and easy to maintain. I focus on clean structure, ARIA roles where needed, and reusable components.">
+        Read more
+      </button>
     </div>
+
+    <!-- CSS -->
     <div class="skill-box">
+      <i class="fa-brands fa-css3"></i>
       <h3>CSS</h3>
-      <p>Responsive and modern UI design.</p>
-      <a href="#" class="btn read-more" data-title="CSS" data-text="CSS (Cascading Style Sheets) is what I use to transform plain HTML into responsive, visually engaging websites. I specialize in modern CSS features such as Flexbox and Grid for layouts, CSS variables for maintainability and keyframe animations for interactive experiences. I ensure my styles are cross-browser compatible, mobile-friendly and accessible; delivering designs that adapt seamlessly to any screen size.">Read more</a>
+      <p>Responsive layouts, animations, modern UI systems.</p>
+      <button type="button"
+              class="btn read-more"
+              data-title="CSS"
+              data-desc="From utility-first to component-driven CSS, I build responsive layouts, fluid grids, and elegant animations (keyframes, transitions, transforms). I use variables, prefers-reduced-motion, and modern features.">
+        Read more
+      </button>
     </div>
+
+    <!-- Graphics Design -->
     <div class="skill-box">
+      <i class="fa-solid fa-paintbrush"></i>
       <h3>Graphics Design</h3>
-      <p>Create animated and realistic designs.</p>
-      <a href="#" class="btn read-more" data-title="Graphics Design" data-text="I create designs that are not only visually appealing but also functional and aligned with branding goals. My expertise covers creating logos, posters, banners and social media graphics using tools like Adobe Photoshop, Illustrator and Figma. I also design UI/UX prototypes and bring motion into projects through animated assets. My focus is on delivering designs that communicate effectively and leave a lasting impression.">Read more</a>
+      <p>Brand-first visuals with a clean aesthetic.</p>
+      <button type="button"
+              class="btn read-more"
+              data-title="Graphics Design"
+              data-desc="I craft design systems that balance brand personality with usability—color, type, spacing, hierarchy, and iconography—optimized for web delivery.">
+        Read more
+      </button>
     </div>
+
+    <!-- JavaScript -->
     <div class="skill-box">
+      <i class="fa-brands fa-js"></i>
       <h3>JavaScript</h3>
-      <p>Interactive frontends and tooling.</p>
-      <a href="#" class="btn read-more" data-title="JavaScript" data-text="JavaScript allows me to add interactivity and functionality to websites and applications. I use ES6+ features, event-driven programming and DOM manipulation to build dynamic user interfaces. I work with APIs, asynchronous programming (AJAX/Fetch) and can integrate libraries or frameworks when needed. My focus is on creating responsive, fast and user-friendly frontends that make websites come alive.">Read more</a>
+      <p>Interactive UI, data flow, API work, tooling.</p>
+      <button type="button"
+              class="btn read-more"
+              data-title="JavaScript"
+              data-desc="I build interactive experiences, handle state, talk to APIs, and keep bundles lean. I pay attention to accessibility, performance, and progressive enhancement.">
+        Read more
+      </button>
     </div>
+
+    <!-- MySQL -->
     <div class="skill-box">
+      <i class="fa-solid fa-database"></i>
       <h3>MySQL</h3>
-      <p>CRUD, joins, indexing basics.</p>
-      <a href="#" class="btn read-more" data-title="MySQL" data-text="MySQL is the database system I use to manage structured data for web applications. I design normalized schemas, write optimized queries and perform CRUD operations securely. I also work with relationships, indexes and JOINs to ensure efficiency and scalability. MySQL skills allow me to build dynamic, data-driven applications that store and retrieve information reliably.">Read more</a>
+      <p>Relational modeling, queries, and optimization.</p>
+      <button type="button"
+              class="btn read-more"
+              data-title="MySQL"
+              data-desc="I design schemas, write efficient queries, and optimize with indexes. I care about data integrity, migrations, and safe database access from apps.">
+        Read more
+      </button>
     </div>
   </div>
 </section>
 
-<!-- Floating Modal -->
-<div class="skill-modal" id="skillModal">
-  <div class="skill-modal-content">
-    <span class="skill-modal-close">&times;</span>
-    <h3 id="modal-title"></h3>
-    <p id="modal-text"></p>
+<!-- Modal (will be auto-created by JS if you remove it) -->
+<div id="skill-modal" class="skill-modal" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="skill-modal__content">
+    <button class="skill-modal__close" aria-label="Close">&times;</button>
+    <h3 id="skill-modal-title"></h3>
+    <div id="skill-modal-body"></div>
   </div>
 </div>
 
