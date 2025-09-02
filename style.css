@@ -179,6 +179,21 @@ body {
     cursor: pointer;
 }
 
+.login-btn {
+  padding: 6px 14px;
+  border: 1px solid #ff4081;
+  border-radius: 20px;
+  background: transparent;
+  color: #ff4081;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+  background: #ff4081;
+  color: #111;
+}
+
 /* Dashboard Messages Table */
 .dashboard-container {
   margin: 2rem auto;
