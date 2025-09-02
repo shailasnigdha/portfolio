@@ -24,7 +24,7 @@ $messages = $conn->query("SELECT * FROM contacts ORDER BY id DESC");
   <meta charset="UTF-8">
   <title>Dashboard</title>
   <style>
-  body {
+    body {
     font-family: "Segoe UI", Arial, sans-serif;
     background: #0d1117; /* Dark background */
     margin: 0;
@@ -150,8 +150,7 @@ $messages = $conn->query("SELECT * FROM contacts ORDER BY id DESC");
     box-shadow: 0 0 20px rgba(88,166,255,0.8);
     transform: translateY(-2px);
   }
-</style>
-
+  </style>
 
 </head>
 <body>
