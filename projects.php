@@ -3,7 +3,7 @@ $pageTitle = "Projects — Shaila Akter";
 include 'includes/header.php';
 include 'includes/db.php';
 
-// Fetch all projects (newest first)
+// Fetch all projects (newest last)
 $stmt = $conn->prepare("SELECT id, title, description, image, link FROM projects ORDER BY id ASC");
 $stmt->execute();
 $result = $stmt->get_result();

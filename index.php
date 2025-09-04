@@ -1,4 +1,5 @@
-<?php $pageTitle = "Home — Shaila Akter"; include 'includes/header.php'; ?>
+<?php $pageTitle = "Home — Shaila Akter"; 
+include 'includes/header.php'; ?>
 <section class="home">
   <div class="home-content">
     <h3>Hello, I'm</h3>
